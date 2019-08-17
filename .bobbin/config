@@ -1,0 +1,8 @@
+# [loader]
+# jlink-device="nRF52840_xxAA"
+
+# [filter]
+# device = "982f32db"
+
+[builder]
+target = "thumbv7em-none-eabihf"

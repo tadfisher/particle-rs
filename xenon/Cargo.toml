@@ -1,0 +1,27 @@
+[package]
+authors = ["Tad FIsher <tadfisher@gmail.com>"]
+categories = ["embedded", "hardware-support", "no-std"]
+description = "Board support crate for the Particle Xenon device"
+keywords = ["arm", "cortex-m", "nrf52840", "hal", "embedded", "embedded-hal"]
+license = "MIT OR Apache-2.0"
+name = "particle-xenon"
+repository = "https://github.com/tadfisher/particle-rs"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+cortex-m = { version = "0.6.0", features = ["inline-asm", "const-fn"] }
+cortex-m-rt = "0.6.8"
+embedded-hal = "0.2.3"
+nrf52840-hal = "0.8.1"
+
+[dev-dependencies]
+cortex-m-rt = "0.6.5"
+cortex-m-semihosting = "~0.3"
+panic-halt = "~0.2"
+panic-semihosting = "~0.5"
+nb = "~0.1"
+
+[features]
+rt = ["nrf52840-hal/rt"]
+default = ["rt"]
