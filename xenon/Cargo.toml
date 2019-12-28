@@ -15,6 +15,7 @@ cortex-m = { version = "0.6.1", features = ["inline-asm", "const-fn"] }
 cortex-m-rt = "0.6.11"
 embedded-hal = "0.2.3"
 nrf52840-hal = "0.8.1"
+particle-gen3-common = { path = "../gen3-common/" }
 
 [dev-dependencies]
 cortex-m-rt = "0.6.11"

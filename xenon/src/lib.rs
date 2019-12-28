@@ -4,16 +4,13 @@ pub mod prelude {
     pub use nrf52840_hal::prelude::*;
 }
 
-use nrf52840_hal::{
-    gpio::{p0, p1, Floating, Input},
-    prelude::*,
-    target::{self as pac, CorePeripherals, Peripherals},
-    // uarte, Uarte,
-};
+pub use particle_gen3_common::*;
+
+use nrf52840_hal::target::{self as pac, CorePeripherals, Peripherals};
 
 #[allow(non_snake_case)]
 pub struct Board {
-    pub pins: Pins,
+    pub pins: gpio::Pins,
 
     /// Core peripheral: Cache and branch predictor maintenance operations
     pub CBP: pac::CBP,
@@ -233,37 +230,10 @@ impl Board {
     }
 
     pub fn new(cp: CorePeripherals, p: Peripherals) -> Self {
-        // TODO update for next release
-        // let pins0 = p0::Parts::new(p.P0);
-        // let pins1 = p1::Parts::new(p.P1);
-        let pins0 = p.P0.split();
-        let pins1 = p.P1.split();
+        let pins = gpio::Pins::new(p.P0, p.P1);
 
         Self {
-            pins: Pins {
-                rst: pins0.p0_18,
-                mode: pins0.p0_11,
-                a0: pins0.p0_03,
-                a1: pins0.p0_04,
-                a2: pins0.p0_28,
-                a3: pins0.p0_29,
-                a4: pins0.p0_30,
-                a5: pins0.p0_31,
-                sck: pins1.p1_15,
-                mosi: pins1.p1_13,
-                miso: pins1.p1_14,
-                rx: pins0.p0_08,
-                tx: pins0.p0_06,
-                d0: pins0.p0_26,
-                d1: pins0.p0_27,
-                d2: pins1.p1_01,
-                d3: pins1.p1_02,
-                d4: pins1.p1_08,
-                d5: pins1.p1_10,
-                d6: pins1.p1_11,
-                d7: pins1.p1_12,
-                d8: pins1.p1_03,
-            },
+            pins,
             // Core peripherals
             CBP: cp.CBP,
             CPUID: cp.CPUID,
@@ -339,30 +309,4 @@ impl Board {
             I2S: p.I2S,
         }
     }
-}
-
-// Maps the pins to the names printed on the device
-pub struct Pins {
-    pub rst: p0::P0_18<Input<Floating>>,
-    pub mode: p0::P0_11<Input<Floating>>,
-    pub a0: p0::P0_03<Input<Floating>>,
-    pub a1: p0::P0_04<Input<Floating>>,
-    pub a2: p0::P0_28<Input<Floating>>,
-    pub a3: p0::P0_29<Input<Floating>>,
-    pub a4: p0::P0_30<Input<Floating>>,
-    pub a5: p0::P0_31<Input<Floating>>,
-    pub sck: p1::P1_15<Input<Floating>>,
-    pub mosi: p1::P1_13<Input<Floating>>,
-    pub miso: p1::P1_14<Input<Floating>>,
-    pub rx: p0::P0_08<Input<Floating>>,
-    pub tx: p0::P0_06<Input<Floating>>,
-    pub d0: p0::P0_26<Input<Floating>>,
-    pub d1: p0::P0_27<Input<Floating>>,
-    pub d2: p1::P1_01<Input<Floating>>,
-    pub d3: p1::P1_02<Input<Floating>>,
-    pub d4: p1::P1_08<Input<Floating>>,
-    pub d5: p1::P1_10<Input<Floating>>,
-    pub d6: p1::P1_11<Input<Floating>>,
-    pub d7: p1::P1_12<Input<Floating>>,
-    pub d8: p1::P1_03<Input<Floating>>,
 }
