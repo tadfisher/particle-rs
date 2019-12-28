@@ -1,5 +1,5 @@
 [workspace]
-members = [ "xenon" ]
+members = ["argon", "gen3-common", "xenon"]
 
 [profile.dev]
 incremental = false
