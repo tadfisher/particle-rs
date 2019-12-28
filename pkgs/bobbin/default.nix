@@ -11,7 +11,7 @@ rustPlatform.buildRustPackage rec {
   };
 
   cargoPatches = [ ./add-cargo-lock.patch ];
-  cargoSha256 = "0n81bgg4qjmwd603hv3jls8yy18xxiax51g7y3m972gsnk391mb0";
+  cargoSha256 = "1jhdxc4lkdw755lxcai9v1dhdyzalxa0iwailipq571kg51ax40s";
 
   meta = with lib; {
     description = "A Rust command line tool to simplify embedded development and deployment";
