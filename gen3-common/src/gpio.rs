@@ -4,36 +4,35 @@ use nrf52840_hal::gpio::p1;
 
 /// Maps the pins to the names printed on the device
 pub struct Pins {
-    pub rst: p0::P0_18<gpio::Input<gpio::Floating>>,
-    pub mode: p0::P0_11<gpio::Input<gpio::Floating>>,
-    pub a0: p0::P0_03<gpio::Input<gpio::Floating>>,
-    pub a1: p0::P0_04<gpio::Input<gpio::Floating>>,
-    pub a2: p0::P0_28<gpio::Input<gpio::Floating>>,
-    pub a3: p0::P0_29<gpio::Input<gpio::Floating>>,
-    pub a4: p0::P0_30<gpio::Input<gpio::Floating>>,
-    pub a5: p0::P0_31<gpio::Input<gpio::Floating>>,
-    pub sck: p1::P1_15<gpio::Input<gpio::Floating>>,
-    pub mosi: p1::P1_13<gpio::Input<gpio::Floating>>,
-    pub miso: p1::P1_14<gpio::Input<gpio::Floating>>,
-    pub rx: p0::P0_08<gpio::Input<gpio::Floating>>,
-    pub tx: p0::P0_06<gpio::Input<gpio::Floating>>,
-    pub d0: p0::P0_26<gpio::Input<gpio::Floating>>,
-    pub d1: p0::P0_27<gpio::Input<gpio::Floating>>,
-    pub d2: p1::P1_01<gpio::Input<gpio::Floating>>,
-    pub d3: p1::P1_02<gpio::Input<gpio::Floating>>,
-    pub d4: p1::P1_08<gpio::Input<gpio::Floating>>,
-    pub d5: p1::P1_10<gpio::Input<gpio::Floating>>,
-    pub d6: p1::P1_11<gpio::Input<gpio::Floating>>,
-    pub d7: p1::P1_12<gpio::Input<gpio::Floating>>,
-    pub d8: p1::P1_03<gpio::Input<gpio::Floating>>,
+    pub rst: p0::P0_18<gpio::Disconnected>,
+    pub mode: p0::P0_11<gpio::Disconnected>,
+    pub a0: p0::P0_03<gpio::Disconnected>,
+    pub a1: p0::P0_04<gpio::Disconnected>,
+    pub a2: p0::P0_28<gpio::Disconnected>,
+    pub a3: p0::P0_29<gpio::Disconnected>,
+    pub a4: p0::P0_30<gpio::Disconnected>,
+    pub a5: p0::P0_31<gpio::Disconnected>,
+    pub sck: p1::P1_15<gpio::Disconnected>,
+    pub mosi: p1::P1_13<gpio::Disconnected>,
+    pub miso: p1::P1_14<gpio::Disconnected>,
+    pub rx: p0::P0_08<gpio::Disconnected>,
+    pub tx: p0::P0_06<gpio::Disconnected>,
+    pub d0: p0::P0_26<gpio::Disconnected>,
+    pub d1: p0::P0_27<gpio::Disconnected>,
+    pub d2: p1::P1_01<gpio::Disconnected>,
+    pub d3: p1::P1_02<gpio::Disconnected>,
+    pub d4: p1::P1_08<gpio::Disconnected>,
+    pub d5: p1::P1_10<gpio::Disconnected>,
+    pub d6: p1::P1_11<gpio::Disconnected>,
+    pub d7: p1::P1_12<gpio::Disconnected>,
+    pub d8: p1::P1_03<gpio::Disconnected>,
 }
 
 impl Pins {
-    pub fn new(p0: nrf52840_hal::target::P0, p1: nrf52840_hal::target::P1) -> Self {
-        use gpio::GpioExt;
+    pub fn new(p0: nrf52840_hal::pac::P0, p1: nrf52840_hal::pac::P1) -> Self {
 
-        let pins0 = p0.split();
-        let pins1 = p1.split();
+        let pins0 = p0::Parts::new(p0);
+        let pins1 = p1::Parts::new(p1);
 
         Self {
             rst: pins0.p0_18,

@@ -6,9 +6,9 @@ keywords = ["arm", "cortex-m", "nrf52840", "hal"]
 license = "MIT OR Apache-2.0"
 name = "particle-gen3-common"
 repository = "https://github.com/tadfisher/particle-rs"
-documentation = "https://docs.rs/particle-gen3-common/0.0.1/particle_gen3_common/"
+documentation = "https://docs.rs/particle-gen3-common/0.0.1/particle-gen3-common/"
 version = "0.0.1"
 edition = "2018"
 
 [dependencies]
-nrf52840-hal = "0.8.1"
+nrf52840-hal = "0.12.1"
