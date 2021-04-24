@@ -3,7 +3,7 @@
 
 extern crate panic_halt;
 
-use particle_xenon::{prelude::*, Board};
+use particle_argon::{prelude::*, Board};
 use cortex_m_rt::{entry};
 use nrf52840_hal::gpio::Level;
 
