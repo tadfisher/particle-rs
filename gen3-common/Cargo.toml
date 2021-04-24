@@ -6,7 +6,7 @@ keywords = ["arm", "cortex-m", "nrf52840", "hal"]
 license = "MIT OR Apache-2.0"
 name = "particle-gen3-common"
 repository = "https://github.com/tadfisher/particle-rs"
-documentation = "https://docs.rs/particle-argon/0.0.1/particle_argon/"
+documentation = "https://docs.rs/particle-gen3-common/0.0.1/particle_gen3_common/"
 version = "0.0.1"
 edition = "2018"
 
